@@ -1,4 +1,5 @@
 import { CategoryItem } from "../category-item/category-item.component"
+
 export const Directory = ({categories}) => {
 
     return (

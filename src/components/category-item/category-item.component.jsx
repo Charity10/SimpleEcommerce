@@ -1,4 +1,4 @@
-
+ 
 
 export const CategoryItem = ({category}) =>{
     const { imageUrl, title, id } = category

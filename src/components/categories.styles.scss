@@ -6,7 +6,7 @@
   }
   
   .category-container {
-    min-width: 30%;
+    min-width: 30%; 
     height: 240px;
     flex: 1 1 auto;
     display: flex;
@@ -49,8 +49,8 @@
     }
   
     .category-body-container {
-      height: 90px;
-      padding: 0 25px;
+      height: 110px;
+      padding: 0 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -63,7 +63,7 @@
       h2 {
         font-weight: bold;
         margin: 0 6px 0;
-        font-size: 22px;
+        font-size: 20px;
         color: #4a4a4a;
       }
   
