@@ -1,11 +1,18 @@
-import { Fragment } from "react"
-import { signInWithGooglePopup, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils"
+import { Fragment } from "react";
+
+
+
+import { auth, signInWithGooglePopup,
+    createUserDocumentFromAuth
+} from "../../utils/firebase/firebase.utils";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+// import { SignUpForm } from "../../components/sign-up-form/sign-up-form.component";
+
 
 export const SignIn = () => {
-
-    const logGoogleUser = async() => {
-        const response = await signInWithGooglePopup();
-        console.log(response)
+    const logGoogleUser = async () => {
+        const {user} =  await signInWithGooglePopup();
+        createUserDocumentFromAuth(user)
     };
 
     return (
@@ -13,7 +20,8 @@ export const SignIn = () => {
           <h1> Just sign In</h1>
         <button onClick={logGoogleUser}>
             sign in with Google
-        </button>  
+        </button> 
+        {/* <SignUpForm />  */}
         </Fragment>
         
     )
