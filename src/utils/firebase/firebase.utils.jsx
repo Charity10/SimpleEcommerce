@@ -37,6 +37,27 @@ export const db = getFirestore()
 export const createUserDocumentFromAuth = async(userAuth) => {
   // see if there is an existing document reference
   const userDocRef = doc(db, 'users', userAuth.uid)
+
+
+const userSnapshot = await getDoc(userDocRef)
+console.log(userSnapshot);
+console.log(userSnapshot.exists())
+
+if (!userSnapshot.exists()){
+  const { displayName, email } = userAuth;
+  const createdAt = new Data();
+
+  try {
+    await setDoc(userDocRef, {
+      displayName,
+      email,
+      createdAt
+    });
+  } catch (error) {
+    console.log('Error creating the user', error.message);
+  }
 }
 
+return userDocRef;
+};
 export default firebasApp;
