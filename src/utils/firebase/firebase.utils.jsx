@@ -3,6 +3,7 @@ import {
     getAuth,
     signInWithPopup,
     GoogleAuthProvider,
+    createUserWithEmailAndPassword
 } from 'firebase/auth';
 
 import {
@@ -35,6 +36,7 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 export const db = getFirestore()
 
 export const createUserDocumentFromAuth = async(userAuth) => {
+  if (!userAuth) return
   // see if there is an existing document reference
   const userDocRef = doc(db, 'users', userAuth.uid)
 
@@ -60,4 +62,10 @@ if (!userSnapshot.exists()){
 
 return userDocRef;
 };
+
+export const createAuthUserWithEmailAndPassword = async() => {
+  if (!email || !password) return;
+
+  return createUserWithEmailAndPassword(auth, email, password)
+}
 export default firebasApp;
